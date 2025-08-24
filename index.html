@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+   <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,6 +30,7 @@
             width: 100%;
             max-width: 380px;
             overflow: hidden;
+            position: relative;
         }
         
         .header {
@@ -137,9 +139,26 @@
             background: #006ba3;
         }
         
+        .countdown {
+            text-align: center;
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #6c757d;
+        }
+        
+        .countdown-number {
+            font-weight: bold;
+            color: #e1306c;
+            font-size: 16px;
+        }
+        
         .footer {
             text-align: center;
-            padding: 15px 0 5px;color: #8e8e8e;
+            padding: 15px 0 5px;
+            color: #8e8e8e;
             font-size: 13px;
             text-transform: uppercase;
         }
@@ -177,10 +196,39 @@
             
             <a href="https://t.me/+tWiTsvFknnIyMDE1" class="cta-button">JOIN OUR TELEGRAM CHANNEL</a>
             
+            <div class="countdown">
+                Redirecting to Telegram in <span id="countdown-number" class="countdown-number">10</span> seconds...
+            </div>
+            
             <div class="footer">
                 Get accurate predictions
             </div>
         </div>
     </div>
+
+    <script>
+        // Countdown timer functionality
+        let countdown = 10;
+        const countdownElement = document.getElementById('countdown-number');
+        const telegramLink = 'https://t.me/+tWiTsvFknnIyMDE1';
+        
+        function updateCountdown() {
+            countdown--;
+            countdownElement.textContent = countdown;
+            
+            if (countdown <= 0) {
+                // Redirect to Telegram
+                window.location.href = telegramLink;
+            } else {
+                // Continue countdown
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+        
+        // Start the countdown when the page loads
+        window.onload = function() {
+            setTimeout(updateCountdown, 1000);
+        };
+    </script>
 </body>
-</html>
+</html>     
